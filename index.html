@@ -267,7 +267,7 @@ h1{font-size:clamp(40px,5.6vw,76px);line-height:1.04}
   </article>
   <article class="card glass flag" id="dr-scanner">
     <div class="flag-head"><div><span class="status working">Working Colab application</span><h3>DR Scanner App</h3>
-      <p>A guided Google Colab app that finds Delivery Receipts inside ZIP and 7Z archives, reads each DR number with OCR, then sorts and renames the files.</p></div>
+      <p>A specialized Google Colab application developed around the Delivery Receipt processing requirements of a real-world facilities management and logistics environment. It extracts DR images from ZIP and 7Z archives, identifies receipt numbers using OCR, validates the results against document-specific rules, and organizes the files for operational use.</p></div>
       <div class="shot" role="img" aria-label="Screenshot placeholder">Screenshots coming soon</div></div>
     <ol class="pipe" aria-label="Workflow"><li>Extract images</li><li>Pre-scan for DRs</li><li>OCR and rename</li><li>Review flagged</li><li>Dedupe and check</li><li>Export</li></ol>
     <dl class="case">
@@ -277,6 +277,7 @@ h1{font-size:clamp(40px,5.6vw,76px);line-height:1.04}
       <div><dt>My role</dt><dd>I designed and built the app end to end using AI-assisted development, including the processing rules and the review workflow. A read is accepted and renamed only when it is exactly seven digits plus "A" and at or above a minimum prefix I set. Everything else is flagged with the scanner's read, a suggested fix where one is obvious, and the reason.</dd></div>
       <div><dt>Safeguards built in</dt><dd>Steps 6 and 7 resume where they stopped after a disconnect. Corrections open in preview-only mode first. Nothing is overwritten (duplicates get a suffix), and deleting files requires typing DELETE.</dd></div>
       <div><dt>What it demonstrates</dt><dd>Designing a multi-stage document-processing pipeline, combining OCR with rule-based validation, keeping a human in the loop for uncertain cases, integrating Drive and Sheets, and making a technical tool usable by non-technical people.</dd></div>
+      <div style="grid-column:1/-1"><dt>Purpose-built, adaptable approach</dt><dd>DR Scanner was originally developed around a specific Delivery Receipt format and operational requirements within a facilities management and logistics environment. Its document extraction and validation rules were tailored to that particular use case. The underlying document-processing approach can potentially be adapted to other receipt formats through adjustments to document recognition, extraction rules, and validation logic.</dd></div>
     </dl>
     <ul class="stats" aria-label="Usage scale"><li><b>Nearly 30,000</b>images processed in total</li><li><b>Nearly 20,000</b>in a single batch</li></ul>
     <p class="note">Source notebook available on request. Drive paths and sheet links are not published here.</p>
