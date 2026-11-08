@@ -156,6 +156,27 @@ h1{font-size:clamp(40px,5.6vw,76px);line-height:1.04}
 @media(max-width:820px){.layers{grid-template-columns:1fr;gap:26px}.layers li:not(:last-child)::after{content:"↓";right:auto;left:50%;top:auto;bottom:-24px;transform:translateX(-50%)}}.slim .chips{margin:0!important;padding:0}
 .flag+.flag,.flag+.slim{margin-top:20px}
 @media(max-width:820px){.slim{flex-direction:column;align-items:flex-start;padding:24px}}
+.solo .flag-head{grid-template-columns:1fr}
+.sub-t{color:var(--orange);font-weight:600;font-size:15px;margin:2px 0 12px}
+.blk{margin-top:40px}.blk h4{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);margin-bottom:12px}.blk h4 .lv{margin-left:8px}
+.bul{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:8px 24px;margin-top:12px}
+.bul li{position:relative;padding-left:18px;color:#d3dcea;font-size:14px}.bul li::before{content:"";position:absolute;left:0;top:.6em;width:7px;height:7px;border-radius:50%;background:var(--copper)}
+.arch{display:grid;grid-template-columns:repeat(4,1fr);gap:30px}.arch .col{position:relative}
+.arch .col:not(:last-child)::after{content:"→";position:absolute;right:-23px;top:44%;color:var(--orange);font-size:18px}
+.arch h5{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.node{padding:12px 14px;border-radius:14px;background:rgba(255,255,255,.06);border:1px solid var(--edge);font-size:13px;color:#e6edf8;margin-bottom:10px}
+.node b{display:block;font-size:14px;color:#fff}.node small{display:block;color:var(--muted);font-size:12px;margin-top:2px}
+.node.plan{border:1px dashed var(--orange);background:rgba(255,150,56,.07)}
+.arch-foot{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px}
+.persp{display:grid;grid-template-columns:1fr auto 1fr;gap:16px;align-items:center;margin-top:16px}.arr{color:var(--orange);font-size:20px}
+.persp .node,.chain .node{margin-bottom:0}.persp>div>.node+.node{margin-top:10px}
+.chain{display:flex;flex-wrap:wrap;align-items:center;gap:12px}
+.two-c{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
+.calc{margin:0}.calc div{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.1);font-size:14px}.calc div span:first-child{color:var(--muted)}.calc .tot{font-weight:700;color:#fff}.calc .tot span:first-child{color:#fff}.calc b{margin-bottom:6px}.calc small{margin-top:10px}
+.slim .bul{grid-template-columns:1fr;min-width:280px;margin:0}
+@media(max-width:1000px){.arch{grid-template-columns:repeat(2,1fr)}.arch .col:nth-child(2)::after{display:none}}
+@media(max-width:820px){.two-c,.arch-foot,.persp{grid-template-columns:1fr}.bul{grid-template-columns:1fr}.arr{transform:rotate(90deg);justify-self:center}.slim .bul{min-width:0}}
+@media(max-width:560px){.arch{grid-template-columns:1fr}.arch .col:not(:last-child)::after{content:"↓";right:auto;left:50%;top:auto;bottom:-26px}}
 </style>
 </head>
 <body>
@@ -243,38 +264,104 @@ h1{font-size:clamp(40px,5.6vw,76px);line-height:1.04}
 
 <section class="s" id="projects"><div class="wrap rv">
   <p class="kicker">Projects</p><h2>Projects &amp; Case Studies</h2>
-  <p class="intro">Practical technical implementations, each shown with its real status.</p>
+  <p class="intro">Each project was built from an actual operational problem, not as a coding exercise, and shows its real status.</p>
   <ol class="pindex">
-    <li><a class="glass" href="#hubtrack"><i>01</i><b>HubTrack Pro</b><span>Working integration</span></a></li>
-    <li><a class="glass" href="#dr-scanner"><i>02</i><b>DR Scanner App</b><span>Working Colab application</span></a></li>
+    <li><a class="glass" href="#hubtrack"><i>01</i><b>HubTrack Pro</b><span>Flagship · Working integration</span></a></li>
+    <li><a class="glass" href="#dr-scanner"><i>02</i><b>DR Scanner App</b><span>Working application</span></a></li>
     <li><a class="glass" href="#datalink"><i>03</i><b>DataLink</b><span>In development</span></a></li>
     <li><a class="glass" href="#colab"><i>04</i><b>Custom Google Colab Solutions</b><span>Hands-on · AI-assisted</span></a></li>
   </ol>
-  <article class="card glass flag" id="hubtrack">
-    <div class="flag-head"><div><span class="status working">Working integration · Flagship</span><h3>HubTrack Pro</h3>
-      <p>Odoo and Google Sheets integration for inventory movement monitoring and reconciliation across multiple hubs.</p></div>
-      <div class="shot" role="img" aria-label="Demo placeholder">Demo with simulated data coming soon</div></div>
-    <dl class="case">
-      <div><dt>The problem</dt><dd>Inventory movements across multiple hubs and counterpart locations were recorded in Odoo, but extracting, organizing, classifying, and analyzing them took repetitive manual work. The challenge was making the data useful for operational monitoring, not just retrieving it.</dd></div>
-      <div><dt>The solution</dt><dd>Inventory movement records are pulled directly from Odoo into a structured Google Sheets environment, classified as incoming, outgoing, or internal, and mapped to the correct hubs and counterparts to support analysis and reconciliation.</dd></div>
-      <div><dt>Technology</dt><dd>Odoo v17 · Odoo JSON-RPC API · Google Apps Script · Google Sheets (ARRAYFORMULA, MAP, FILTER, LAMBDA) · AI-assisted development</dd></div>
-      <div><dt>My role</dt><dd>I defined the operational requirements and made the key design decisions: Odoo as the source of truth, Apps Script for API extraction, Sheets for analysis, and a separate hub master table for mapping. I set the IN / OUT / INT / IGNORE classification, separated raw data from reference data and calculations, and chose chunked extraction for large volumes. AI tools helped draft and debug the code and formulas. I supplied the business context, evaluated outputs, caught incorrect results, and directed the revisions.</dd></div>
-      <div><dt>How I validated it</dt><dd>Tested against a live Odoo v17 environment: authentication, record retrieval, chunked extraction, and hub mapping all worked. The validation dataset held 17,051 classified records. When formulas returned wrong results, such as date-based calculations covering all history instead of the requested period, I inspected the underlying fields and refined the logic.</dd></div>
-      <div><dt>What it demonstrates</dt><dd>Turning a real operational problem into system requirements, designing an API-based data workflow, directing and checking AI-assisted code, and improving a solution through iterative testing.</dd></div>
+  <article class="card glass flag solo" id="hubtrack">
+    <div class="flag-head"><div><span class="status working">Flagship case study · Working integration</span><h3>HubTrack Pro</h3>
+      <p class="sub-t">Integrated Inventory Intelligence &amp; Logistics Monitoring</p>
+      <p>A purpose-built operational information system for inventory visibility, transaction consolidation, replenishment monitoring, and logistics coordination across South Luzon operations. It integrates Odoo ERP with Google Sheets and Google Apps Script, turning distributed enterprise data into structured, interconnected operational information.</p>
+      <p style="margin-top:12px">It grew out of a manually maintained Google Sheets workflow that depended on several staff exporting Odoo records under different account-level permissions. I designed and developed the integration and the connected data workflows.</p></div></div>
+
+    <div class="blk"><h4>The operational challenge</h4>
+      <p class="body">Regional inventory data had to be consolidated from multiple Odoo accounts. Four staff members with different access permissions each extracted their assigned areas, which made collection fragmented and manual. The operation also needed to:</p>
+      <ul class="bul">
+        <li>Consolidate inventory movements across regional hubs</li>
+        <li>Read internal transfers from both source and destination hub perspectives</li>
+        <li>Monitor fast-moving consumables at individual hubs</li>
+        <li>Calculate replenishment needs from physical counts and later movements</li>
+        <li>Track replenishment requests and their stock transfer requests</li>
+        <li>Monitor purchase requests and related purchase orders</li>
+        <li>Connect delivery receipt liquidation with inventory transactions</li></ul></div>
+
+    <div class="blk"><h4>Solution architecture</h4>
+      <div class="arch">
+        <div class="col"><h5>Source</h5><div class="node"><b>Odoo v17 ERP</b><small>Inventory movements, STR, PR and PO records</small></div></div>
+        <div class="col"><h5>Google Apps Script</h5>
+          <div class="node"><b>Stock Liquidation Analysis</b><small>Consolidates inventory movements across hubs</small></div>
+          <div class="node"><b>STR Extraction</b><small>Stock Transfer Requests</small></div>
+          <div class="node"><b>PR Extraction</b><small>Purchase Requests</small></div>
+          <div class="node"><b>PO Extraction</b><small>Purchase Orders</small></div></div>
+        <div class="col"><h5>Google Sheets databases</h5>
+          <div class="node"><b>Consolidated master database</b><small>Structured with the Hub Perspective</small></div>
+          <div class="node"><b>STR, PR and PO records</b></div>
+          <div class="node"><b>FORUM DRs</b><small>Daily DR submissions and liquidation status</small></div></div>
+        <div class="col"><h5>Operational outputs</h5>
+          <div class="node"><b>HubTrack Pro Connect</b><small>Replenishment monitoring</small></div>
+          <div class="node"><b>PR and PO monitoring</b></div>
+          <div class="node"><b>HubTrack Pro Plus</b><small>Front-end interface</small></div></div>
+      </div>
+      <div class="arch-foot">
+        <div class="node"><b>DR Scanner → FORUM DRs</b><small>Existing: structured output feeds the DR liquidation workflow</small></div>
+        <div class="node plan"><b>Telegram inventory reports ⇢ HubTrack Pro database <span class="lv dev">Planned</span></b><small>Dashed = planned. Not yet an existing feature.</small></div>
+      </div></div>
+
+    <div class="blk"><h4>Hub Perspective</h4>
+      <p class="body">Odoo's original internal-transfer record was not enough for hub-level analysis. I model each internal transfer from both sides, so every hub sees its own movement. The extraction also captures transactions where external hubs deal with the regional hubs, and everything is consolidated into a clean master database for reporting.</p>
+      <div class="persp" role="img" aria-label="One internal transfer becomes an OUT for the source hub and an IN for the destination hub">
+        <div class="node"><b>Odoo record</b><small>One internal transfer: Hub A → Hub B</small></div><span class="arr">→</span>
+        <div><div class="node"><b>Hub A (source): OUT</b><small>Movement leaves Hub A</small></div><div class="node"><b>Hub B (destination): IN</b><small>Movement arrives at Hub B</small></div></div></div>
+      <p class="note">Fictional illustration.</p></div>
+
+    <div class="blk"><h4>HubTrack Pro Connect</h4>
+      <div class="two-c"><div>
+        <p class="body">The operational monitoring component, built on STR extraction and inventory movement data. It watches fast-moving consumables at each hub and links movement to replenishment activity, so personnel can see which items need attention without investigating every transaction. For each item and hub it shows:</p>
+        <p class="chips" style="padding-top:12px"><span>Physical count and date</span><span>Subsequent IN</span><span>INT-IN</span><span>OUT</span><span>INT-OUT</span><span>Returns</span><span>Expected stock</span><span>Replenishment requirement</span><span>Request status</span><span>Latest STR and status</span></p></div>
+        <div class="node calc"><b>Illustration · Hub A · HD 40 Engine Oil</b>
+          <div><span>Physical count</span><span>10 gal</span></div><div><span>+ Subsequent IN</span><span>5 gal</span></div><div><span>− Subsequent OUT</span><span>10 gal</span></div><div><span>Returns</span><span>0 gal</span></div>
+          <div class="tot"><span>Expected stock</span><span>5 gal</span></div><div><span>Replenishment requirement</span><span>10 gal</span></div><div class="tot"><span>Request status</span><span>Pending Request</span></div>
+          <small>Fictional data, shown only to explain the workflow.</small></div></div></div>
+
+    <div class="blk two-c">
+      <div><h4>PR and PO monitoring</h4><p class="body">PR extraction supports purchase request monitoring, with PO information shown at the relevant line-item level. A separate PO extraction supports retrieving and checking purchase order records.</p></div>
+      <div><h4>HubTrack Pro Plus</h4><p class="body">The front-end interface to the interconnected operational databases. The backend is several Google Sheets and Apps Script integrations. It is the interface layer of the larger system, not an independent inventory application.</p></div></div>
+
+    <div class="blk"><h4>FORUM DRs and DR Scanner</h4>
+      <div class="chain"><div class="node"><b>DR Scanner</b><small>Structured output</small></div><span class="arr">→</span><div class="node"><b>FORUM DRs</b><small>DR submissions and liquidation status</small></div><span class="arr">←</span><div class="node"><b>Stock Liquidation Analysis</b><small>Odoo-extracted data</small></div></div>
+      <p class="body" style="margin-top:14px">Because FORUM DRs is connected to the Odoo-extracted data, DR numbers can be checked against inventory transaction records to see whether they have already been liquidated. HubTrack Pro and DR Scanner work as parts of one operational workflow.</p></div>
+
+    <div class="blk"><h4>Planned enhancement: Telegram inventory reporting <span class="lv dev">Planned</span></h4>
+      <div class="node plan" style="padding:20px">
+        <p class="body">Staff already submit hub inventory reports through Telegram, but that information still has to be encoded manually into the HubTrack Pro Sheets backend. Telegram-to-Google Sheets connectivity is already working. Connecting this reporting workflow directly to the HubTrack Pro database is the next step. It is planned and under development, and is not an existing feature.</p>
+        <ol class="pipe" style="margin:16px 0"><li>Staff submit hub reports in Telegram</li><li>Integration captures the report</li><li>Data goes to the right Sheets database</li><li>Backend processes and organizes it</li><li>HubTrack Pro uses it for monitoring</li></ol>
+        <p class="body"><b>Expected value (intended, not measured):</b> less repetitive encoding, shorter delay between reporting and database updates, fewer encoding errors, more consistent records, and inventory reporting tied more directly to monitoring.</p></div>
+      <p class="note">Spotting this manual encoding step is how continuous improvement works on this project: operations drive the next build.</p></div>
+
+    <dl class="case blk">
+      <div><dt>Technology</dt><dd>Odoo v17 · Odoo API integration · Google Apps Script · Google Sheets · advanced formulas and array-based processing · AI-assisted development and troubleshooting</dd></div>
+      <div><dt>My role</dt><dd>Operations-led solution design: requirements, workflow architecture, API integration, data modeling, transaction classification, implementation, testing, and continuous improvement. AI tools helped draft and debug code and formulas. I supplied the business context, evaluated outputs, caught incorrect results, and directed revisions.</dd></div>
+      <div><dt>Key technical contribution</dt><dd>1. Integrating distributed Odoo data into one consolidated operational structure. 2. Developing the Hub Perspective for internal transfers. 3. Connecting inventory movement, replenishment, procurement, and DR liquidation workflows.</dd></div>
+      <div><dt>How it was tested</dt><dd>Run against a live Odoo v17 environment: authentication, record retrieval, chunked extraction, and hub mapping. The validation dataset held 17,051 classified records. When date-based formulas covered all history instead of the requested period, I traced the fields and corrected the logic.</dd></div>
     </dl>
     <ul class="stats" aria-label="Validation dataset classification"><li><b>6,648</b>IN</li><li><b>8,563</b>OUT</li><li><b>1,780</b>INT</li><li><b>60</b>IGNORE</li></ul>
-    <p class="note">A public demo will use simulated data only. No production data, credentials, or proprietary source code is published here.</p>
+    <p class="note">Built from real operational needs. All examples on this page use fictional data. No credentials, account details, or private records are shown.</p>
   </article>
-  <article class="card glass flag" id="dr-scanner">
+  <article class="card glass flag solo" id="dr-scanner">
     <div class="flag-head"><div><span class="status working">Working Colab application</span><h3>DR Scanner App</h3>
+      <p class="sub-t">Intelligent Document Processing for Operational Liquidation</p>
       <p>A specialized Google Colab application developed around the Delivery Receipt processing requirements of a real-world facilities management and logistics environment. It extracts DR images from ZIP and 7Z archives, identifies receipt numbers using OCR, validates the results against document-specific rules, and organizes the files for operational use.</p></div>
-      <div class="shot" role="img" aria-label="Screenshot placeholder">Screenshots coming soon</div></div>
+      </div>
     <ol class="pipe" aria-label="Workflow"><li>Extract images</li><li>Pre-scan for DRs</li><li>OCR and rename</li><li>Review flagged</li><li>Dedupe and check</li><li>Export</li></ol>
     <dl class="case">
-      <div><dt>The problem</dt><dd>Delivery Receipt images arrive bundled in ZIP and 7Z archives, mixed with other images. Each receipt has to be identified, named by its DR number, de-duplicated, and checked against a Google Sheet.</dd></div>
+      <div><dt>The problem</dt><dd>Processing large volumes of delivery receipt images by hand is time-consuming and invites encoding errors, inconsistent identification, and delayed liquidation tracking. The goal was to turn bulk image archives into structured information the existing operational workflow can use.</dd></div>
       <div><dt>The solution</dt><dd>A 12-step notebook with one input: the Drive folder path. It extracts the images, sets aside anything that isn't a Delivery Receipt (fuel delivery receipts included), reads each DR number with OCR, and renames the files. Only doubtful reads go to a human, in a review Google Sheet.</dd></div>
+      <div style="grid-column:1/-1"><dt>Operational integration</dt><dd>DR Scanner is not an isolated OCR experiment. Its structured output feeds FORUM DRs, which is connected to the Odoo-extracted Stock Liquidation Analysis data from HubTrack Pro. DR numbers can therefore be checked against inventory transaction records to see whether a delivery receipt has already been liquidated.</dd></div>
       <div><dt>Technology</dt><dd>Python · Google Colab · Tesseract OCR (pytesseract) · OpenCV · NumPy · zipfile and py7zr · Google Drive · Google Sheets via gspread and the Sheets API · pandas · openpyxl · ipywidgets</dd></div>
-      <div><dt>My role</dt><dd>I designed and built the app end to end using AI-assisted development, including the processing rules and the review workflow. A read is accepted and renamed only when it is exactly seven digits plus "A" and at or above a minimum prefix I set. Everything else is flagged with the scanner's read, a suggested fix where one is obvious, and the reason.</dd></div>
+      <div><dt>My role</dt><dd>I identified the operational problem, then designed and built the app end to end using AI-assisted development, including the processing rules, validation logic, review workflow, and integration into the existing liquidation workflow. A read is accepted and renamed only when it is exactly seven digits plus "A" and at or above a minimum prefix I set. Everything else is flagged with the scanner's read, a suggested fix where one is obvious, and the reason.</dd></div>
       <div><dt>Safeguards built in</dt><dd>Steps 6 and 7 resume where they stopped after a disconnect. Corrections open in preview-only mode first. Nothing is overwritten (duplicates get a suffix), and deleting files requires typing DELETE.</dd></div>
       <div><dt>What it demonstrates</dt><dd>Designing a multi-stage document-processing pipeline, combining OCR with rule-based validation, keeping a human in the loop for uncertain cases, integrating Drive and Sheets, and making a technical tool usable by non-technical people.</dd></div>
       <div style="grid-column:1/-1"><dt>Purpose-built, adaptable approach</dt><dd>DR Scanner was originally developed around a specific Delivery Receipt format and operational requirements within a facilities management and logistics environment. Its document extraction and validation rules were tailored to that particular use case. The underlying document-processing approach can potentially be adapted to other receipt formats through adjustments to document recognition, extraction rules, and validation logic.</dd></div>
@@ -284,6 +371,7 @@ h1{font-size:clamp(40px,5.6vw,76px);line-height:1.04}
   </article>
   <article class="card glass flag dl" id="datalink">
     <div class="flag-head"><div><span class="status indev">In development</span><h3>DataLink</h3>
+      <p class="sub-t">Configurable Workflow Applications</p>
       <p>An application being developed to let users create customized, workflow-specific applications, instead of forcing every stakeholder onto one fixed app. The aim is not just to automate a Telegram chat or send data to a spreadsheet, but to give each business owner or staff member an application built around how they actually work. DataLink is in development and is not a finished product.</p></div></div>
     <ol class="layers" aria-label="DataLink concept">
       <li><i>Interaction layer</i><b>Telegram</b><span>Users work with their application through Telegram messages and bots.</span></li>
@@ -293,13 +381,14 @@ h1{font-size:clamp(40px,5.6vw,76px);line-height:1.04}
     <dl class="case three">
       <div><dt>Existing capability</dt><dd>The underlying technology already works. I have practical experience connecting Telegram bots to Google Sheets through APIs and Google Apps Script.</dd></div>
       <div><dt>Current development</dt><dd>Building DataLink as the application layer: a way to create and configure workflow-specific applications on top of that integration.</dd></div>
-      <div><dt>Technical areas</dt><dd>Telegram Bot API · Google Sheets integration through APIs · Google Apps Script</dd></div>
+      <div><dt>Technical areas</dt><dd>Telegram Bot API · Google Sheets integration through APIs · Google Apps Script · AI-assisted development</dd></div>
     </dl>
     <p class="note">The three layers above describe the design concept. A full technical description and demo will be added as the implementation is completed.</p>
   </article>
-  <article class="card glass slim" id="colab"><div><span class="status working">Hands-on · AI-assisted</span><h3>Custom Google Colab Solutions</h3>
-    <p>Python apps built in Google Colab with AI-assisted development to address business bottlenecks, such as document processing and data organization. DR Scanner is the most developed example so far.</p></div>
-    <p class="chips"><span>Python</span><span>Google Colab</span><span>AI-assisted development</span></p></article>
+  <article class="card glass slim" id="colab"><div><span class="status working">Supporting capability · Hands-on · AI-assisted</span><h3>Custom Google Colab Solutions</h3>
+    <p class="sub-t">Practical Python Automation for Business and Research</p>
+    <p>Practical Python solutions in Google Colab for document-processing, data-handling, research, and business workflow needs, combining problem identification, AI-assisted coding, and hands-on implementation. DR Scanner is the strongest existing example.</p></div>
+    <ul class="bul"><li>Document processing and information extraction</li><li>Bulk file processing</li><li>Data cleaning and transformation</li><li>Research data analysis</li><li>Web-based information collection where permitted</li><li>Custom Python automation workflows</li></ul></article>
   </div></section>
 
 <section class="s" id="training"><div class="wrap rv"><div class="strip glass">
